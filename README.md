@@ -1,1 +1,1 @@
-## Laravel 8 with Inertia React and Typescriptara
+## Laravel 8 with Inertia React and Typescript
