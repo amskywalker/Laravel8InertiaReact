@@ -33200,8 +33200,8 @@ if (false) {} else {
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./Teste": "./resources/js/Pages/Teste.tsx",
-	"./Teste.tsx": "./resources/js/Pages/Teste.tsx"
+	"./IndexUser": "./resources/js/Pages/IndexUser.tsx",
+	"./IndexUser.tsx": "./resources/js/Pages/IndexUser.tsx"
 };
 
 
@@ -33226,35 +33226,68 @@ webpackContext.id = "./resources/js/Pages sync recursive ^\\.\\/.*$";
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Teste.tsx":
-/*!**************************************!*\
-  !*** ./resources/js/Pages/Teste.tsx ***!
-  \**************************************/
+/***/ "./resources/js/Pages/IndexUser.tsx":
+/*!******************************************!*\
+  !*** ./resources/js/Pages/IndexUser.tsx ***!
+  \******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-var react_dom_1 = __importDefault(__webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js"));
-function Example(props) {
+var inertia_1 = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+exports.default = (function (props) {
+    var _a = react_1.useState(""), name = _a[0], setName = _a[1];
+    var _b = react_1.useState(""), email = _b[0], setEmail = _b[1];
+    var users = props.users;
+    var handleSubmit = function (event) {
+        event.preventDefault();
+        inertia_1.Inertia.post("/store", { name: name, email: email, password: '12345678' });
+    };
     return (react_1.default.createElement("div", { className: "container mt-5" },
         react_1.default.createElement("div", { className: "row justify-content-center" },
             react_1.default.createElement("div", { className: "col-md-8" },
                 react_1.default.createElement("div", { className: "card" },
                     react_1.default.createElement("div", { className: "card-header" },
-                        "Hello ",
-                        props.name),
-                    react_1.default.createElement("div", { className: "card-body" }, "Welcome to Inertia JS"))))));
-}
-exports.default = Example;
-if (document.getElementById('example')) {
-    react_dom_1.default.render(react_1.default.createElement(Example, null), document.getElementById('example'));
-}
+                        react_1.default.createElement("h2", null, "Lista de Usu\u00E1rios")),
+                    react_1.default.createElement("div", { className: "card-body" }, users === null || users === void 0 ? void 0 : users.map(function (user) {
+                        return react_1.default.createElement("h2", { key: user.id }, user.name);
+                    })),
+                    react_1.default.createElement("div", { className: "card-footer" },
+                        react_1.default.createElement("form", { className: "form-inline", onSubmit: handleSubmit },
+                            react_1.default.createElement("div", { className: "form-group mr-3" },
+                                react_1.default.createElement("label", { className: "ml-2", htmlFor: "name" }, "Name"),
+                                react_1.default.createElement("input", { id: "name", className: "form-control", onChange: function (event) {
+                                        return setName(event.target.value);
+                                    } })),
+                            react_1.default.createElement("div", { className: "form-group mr-3" },
+                                react_1.default.createElement("label", { className: "ml-2", htmlFor: "email" }, "Email"),
+                                react_1.default.createElement("input", { className: "form-control", id: "name", onChange: function (event) {
+                                        return setEmail(event.target.value);
+                                    } })),
+                            react_1.default.createElement("button", { className: "btn btn-success mr-3", type: "submit" }, "Confirmar"))))))));
+});
 
 
 /***/ }),

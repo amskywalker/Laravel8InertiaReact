@@ -13,4 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\UserController::class, 'index']);
+Route::get('/', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+Route::post('/store', [\App\Http\Controllers\UserController::class, 'store']);
+
+Route::get('/cadastrar', function(){
+    $data = [
+        'name' => 'Adailton Moura dos Santos',
+        'email' => 'adailtonsantos@gmail.com',
+        'password' => '12345678'
+    ];
+    \App\Models\User::create($data);
+});
